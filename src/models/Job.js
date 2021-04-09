@@ -1,4 +1,4 @@
-const jobs = [
+let jobs = [
     {
         id:  1,
         name: "Pizzaria Guloso",
@@ -21,8 +21,13 @@ const jobs = [
 module.exports = {
     get(){
         return jobs;
+    }, 
+    update(newJob){
+        jobs = newJob
     },
-    update(newData){
-
+    delete(id){
+        // se o resultado da condição do filter for verdadeira ele manterá no array, 
+        // se falso será removido
+        jobs = jobs.filter(job => Number(job.id) !== Number(id))
     }
 }
