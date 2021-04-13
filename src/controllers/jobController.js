@@ -1,6 +1,6 @@
 const Job = require('../models/Job')
 const Profile = require('../models/Profile')
-const { calculateBudget, remainingDays } = require('../utils/JobsUtils')
+const { calculateBudget } = require('../utils/JobsUtils')
 class JobController {
 
     create(req, res) {
@@ -9,13 +9,14 @@ class JobController {
         const jobsList = Job.get()
         const lastId = jobsList[jobsList.length - 1]?.id || 0
 
-        jobsList.push({
+        Job.create({
             id: lastId + 1,
             name: req.body.name,
             "daily-hours": req.body["daily-hours"],
             "total-hours": req.body["total-hours"],
             created_at: Date.now()
         })
+
 
         return res.redirect('/')
     }

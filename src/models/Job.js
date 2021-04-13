@@ -21,7 +21,10 @@ let jobs = [
 module.exports = {
     get(){
         return jobs;
-    }, 
+    },
+    create(newJob){
+        jobs.push(newJob)
+    },
     update(newJob){
         jobs = newJob
     },
