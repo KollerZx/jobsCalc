@@ -1,12 +1,11 @@
-const profile = require ('../models/Profile')
+const Profile = require ('../models/Profile')
 
 class ProfileController{
     
-    getProfile(req,res){
-        
-        return res.render("profile",{ profile: profile.get()})
+    async getProfile(req,res){
+        return res.render("profile",{ profile: await Profile.get()})
     }
-    hourlyValue(req, res){
+    async hourlyValue(req, res){
         //pegar os dados do req.body
         const data = req.body
 
@@ -26,8 +25,9 @@ class ProfileController{
 
         const valueHour = data["value-hour"] = data["monthly-budget"] / monthlyTotalHours
 
-        profile.update({
-            ...profile.get(),
+        const profile = await Profile.get()
+        await Profile.update({
+            ... profile,
             ...req.body,
             "value-hour": valueHour
         })

@@ -1,5 +1,5 @@
 {
-  "name": "jobsCalc",
+  "name": "JobsCalc",
   "version": "1.0.0",
   "description": "JobsCalc",
   "main": "./src/server/server.js",
@@ -13,7 +13,6 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "install": "^0.13.0",
     "sqlite": "^4.0.21",
     "sqlite3": "^5.0.2"
   },
